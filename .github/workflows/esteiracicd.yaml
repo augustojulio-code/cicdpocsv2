@@ -2,13 +2,9 @@ name: Java CI
 
 on:
     push:
-        branches: ["master"]
+        branches: ["master", "develop"]
     pull_resquest:
-        branches: ["master"]
-    push: 
-        branches: ["develop"]
-    pull_resquest:
-        branches: ["develop"]
+        branches: ["master", "develop"]
 
 jobs:
     build:
@@ -25,4 +21,3 @@ jobs:
                 cache: maven
         -   name: Build with Maven
             run: mvn -N package --file pom.xml
-            
