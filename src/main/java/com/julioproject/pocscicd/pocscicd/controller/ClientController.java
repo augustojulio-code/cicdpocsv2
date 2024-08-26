@@ -14,4 +14,10 @@ public class ClientController {
         return "Olá imbecil";
     }
 
+    @GetMapping("olav2")
+    public String olcaImbecilV2() {
+        String msg = "Olá imbecil v2";
+        return msg;
+    }
+
 }
