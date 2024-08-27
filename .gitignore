@@ -31,3 +31,30 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Diretórios locais do Terraform
+**/.terraform/*
+
+# Arquivos de estado do Terraform
+*.tfstate
+*.tfstate.*
+
+# Logs de travamento do Terraform
+crash.log
+crash.*.log
+
+# Arquivos de variáveis automáticas
+*.auto.tfvars
+
+# Arquivos de substituição
+*.override.tf
+*.override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Arquivos de configuração do CLI do Terraform
+.terraformrc
+terraform.rc
+
+# Arquivos de lock do Terraform
+.terraform.lock.hcl
