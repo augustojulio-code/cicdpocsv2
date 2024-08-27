@@ -58,11 +58,11 @@ jobs:
           -var="aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" \
           -var="aws_region=us-east-1"
 
-    - name: Terraform Apply
-      if: github.ref == 'refs/heads/develop'
-      run: |
-        terraform apply \
-          -var="aws_access_key=${{ secrets.AWS_ACCESS_KEY }}" \
-          -var="aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" \
-          -var="aws_region=us-east-1" \
-          -auto-approve
+    #- name: Terraform Apply
+    #  if: github.ref == 'refs/heads/develop'
+    #  run: |
+    #    terraform apply \
+    #      -var="aws_access_key=${{ secrets.AWS_ACCESS_KEY }}" \
+    #      -var="aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" \
+    #      -var="aws_region=us-east-1" \
+    #      -auto-approve
