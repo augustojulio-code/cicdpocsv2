@@ -34,7 +34,7 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Build Image Docker
-      run: docker build -t imagemteste:latest .
+      run: docker build -t apiola:latest .
 
     #- name: Install AWS CLI
     #  run: |
