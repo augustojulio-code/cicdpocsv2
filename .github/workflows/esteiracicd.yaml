@@ -48,7 +48,13 @@ jobs:
         aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
         aws-region: us-east-1
 
+    - name: Check Repository Exists
+      id: check_repo
+      run: |
+        aws ecr describe-repositories --repository-names apiola --region us-east-1 || echo "Repository does not exist"
+
     - name: Create a Repository
+      if: steps.check_repo.outputs.result == 'Repository does not exist'
       run: |
         aws ecr --region us-east-1 create-repository --repository-name apiola
 
