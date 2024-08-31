@@ -49,19 +49,19 @@ jobs:
         aws-region: us-east-1
 
     - name: Create a Repository
-      uses: |
+      run: |
         aws ecr --region us-east-1 create-repository --repository-name apiola
 
     - name: Login to ECR
-      uses: |
+      run: |
         aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin {{secrets.AWS_ACCOUNT_ID}}.dkr.ecr.us-east-1.amazonaws.com
 
     - name: Tag Docker Image
-      uses: |
+      run: |
         docker tag apiola:latest ${{secrets.AWS_ACCOUNT_ID}}.dkr.ecr.us-east-1.amazonaws.com/apiola:latest
 
     - name: Docker push
-      uses: |
+      run: |
         docker push {{secrets.AWS_ACCOUNT_ID}}.dkr.ecr.us-east-1.amazonaws.com/apiola:latest
 
     - name: Terraform Init
