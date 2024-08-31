@@ -54,7 +54,7 @@ jobs:
         aws ecr describe-repositories --repository-names apiola --region us-east-1 || echo "Repository does not exist"
 
     - name: Create a Repository
-      if: steps.check_repo.outputs.result == true
+      if: steps.check_repo.outputs.result == true ||  steps.check_repo.outputs.result == 'Repository does not exist'
       run: |
         aws ecr --region us-east-1 create-repository --repository-name apiola
 
