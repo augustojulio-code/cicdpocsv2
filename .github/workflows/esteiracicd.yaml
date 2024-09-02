@@ -95,7 +95,7 @@ jobs:
     - name: List files
       run: ls -la target
 
-    publish:
+  publish:
     runs-on: ubuntu-latest
     needs: build
     steps:
