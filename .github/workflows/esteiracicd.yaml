@@ -49,6 +49,13 @@ jobs:
     - name: List files after build
       run: ls -la target
 
+    - name: Verify JAR file exists
+      run: |
+          if [ ! -f target/pocscicd-0.0.1-SNAPSHOT.jar ]; then
+            echo "JAR file not found!"
+            exit 1
+          fi
+
     - name: Build Image Docker
       run: docker build -t apiola:latest .
 
