@@ -92,6 +92,17 @@ jobs:
           -var="aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" \
           -var="aws_region=us-east-1"
 
+  publish:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Publish artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: target/*.jar  
     #- name: Terraform Apply
     #  if: github.ref == 'refs/heads/develop'
     #  run: |
