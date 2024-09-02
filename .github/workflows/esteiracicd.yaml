@@ -115,14 +115,14 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Download artifact
-        uses: actions/download-artifact@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Download artifact
+      uses: actions/download-artifact@v4
         with:
           name: app
-      - name: Publish artifact
-        run: echo "Artifact published"
+    - name: Publish artifact
+      run: echo "Artifact published"
 
   deploy-test:
     runs-on: ubuntu-latest
