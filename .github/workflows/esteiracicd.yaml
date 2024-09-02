@@ -46,8 +46,8 @@ jobs:
     - name: Build Project
       run: mvn clean package
 
-    - name: Build Image Docker
-      run: docker build -t apiola:latest .
+    # - name: Build Image Docker
+    #   run: docker build -t apiola:latest .
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v2
@@ -95,7 +95,7 @@ jobs:
     - name: List files
       run: ls -la target
 
-  publish:
+    publish:
     runs-on: ubuntu-latest
     needs: build
     steps:
@@ -105,7 +105,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: app
-          path: /app/app.jar
+          path: target/*.jar
 
   deploy-test:
     runs-on: ubuntu-latest
