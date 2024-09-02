@@ -55,6 +55,7 @@ jobs:
             echo "JAR file not found!"
             exit 1
           fi
+          
       - name: Publish artifact
         uses: actions/upload-artifact@v4
         with:
