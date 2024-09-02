@@ -105,7 +105,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: app
-          path: target/*.jar
+          path: /app/app.jar
 
   deploy-test:
     runs-on: ubuntu-latest
