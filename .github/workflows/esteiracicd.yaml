@@ -44,7 +44,7 @@ jobs:
       uses: hashicorp/setup-terraform@v2
 
     - name: Build Project
-      run: mvn clean package
+      run: mvn package
 
     - name: List files after build
       run: ls -la target
