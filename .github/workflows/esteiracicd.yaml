@@ -115,20 +115,7 @@ jobs:
     - name: Publish artifact
       run: echo "Artifact published"
 
-  deploy-test:
-    runs-on: ubuntu-latest
-    needs: publish
-    if: github.ref == 'refs/heads/develop'
-    environment: test
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-    - name: Download artifact
-      uses: actions/download-artifact@v3
-      with:
-        name: app
-    - name: Deploy to Test
-      run: echo "Deploying to Test environment"
+  
                   
     #- name: Terraform Apply
     #  if: github.ref == 'refs/heads/develop'
