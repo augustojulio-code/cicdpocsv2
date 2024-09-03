@@ -129,7 +129,21 @@ jobs:
         name: app
     - name: Deploy to Test
       run: echo "Deploying to Test environment"
-                  
+
+  deploy-prod:
+    runs-on: ubuntu-latest
+    needs: publish
+    if: github.ref == 'refs/heads/master'
+    environment: test
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Download artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: app
+    - name: Deploy to Prod
+      run: echo "Deploying to Prod environment"                
     #- name: Terraform Apply
     #  if: github.ref == 'refs/heads/develop'
     #  run: |
