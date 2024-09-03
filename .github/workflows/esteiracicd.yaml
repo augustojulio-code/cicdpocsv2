@@ -24,6 +24,7 @@ jobs:
       - name: Run unit tests
         run: mvn test
 
+  
   build:
 
     runs-on: ubuntu-latest
@@ -43,8 +44,10 @@ jobs:
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v2
 
-    - name: Build Project
-      run: mvn package
+    - name: Build and Analyze Project
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      run: mvn clean verify sonar:sonar -Dsonar.projectKey=${{ secrets.PROJECT_KEY }} -Dsonar.organization=${{ secrets.ORGANIZATION_KEY }} -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}
     
     - name: Upload artifact
       uses: actions/upload-artifact@v4
@@ -100,7 +103,7 @@ jobs:
           -var="aws_access_key=${{ secrets.AWS_ACCESS_KEY }}" \
           -var="aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" \
           -var="aws_region=us-east-1"
-    
+
 
   publish:
     runs-on: ubuntu-latest
