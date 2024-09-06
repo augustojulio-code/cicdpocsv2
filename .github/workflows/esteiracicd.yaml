@@ -132,6 +132,8 @@ jobs:
         name: app
     - name: Deploy to Test
       run: echo "Deploying to Test environment"
+    - name: List files after build
+      run: ls -la
 
   deploy-prod:
     runs-on: ubuntu-latest
